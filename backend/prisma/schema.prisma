@@ -1,0 +1,72 @@
+// Prisma schema for AeOn4.AI — content API + lead capture (SQLite)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id           String   @id @default(cuid())
+  name         String
+  email        String
+  company      String?
+  facilityType String?
+  message      String
+  country      String?
+  source       String   @default("website")
+  status       String   @default("new")
+  createdAt    DateTime @default(now())
+}
+
+model Stat {
+  id    Int    @id @default(autoincrement())
+  value String
+  label String
+  order Int    @default(0)
+}
+
+model Copilot {
+  id              String           @id
+  order           Int              @default(0)
+  tag             String
+  title           String
+  cardSubtitle    String
+  cardDescription String
+  heroDescription String
+  protocolBadge   String
+  heroWord        String
+  chip1Value      String
+  chip1Label      String
+  chip2Value      String
+  chip2Label      String
+  accentColor     String
+  icon            String
+  features        CopilotFeature[]
+}
+
+model CopilotFeature {
+  id        Int     @id @default(autoincrement())
+  copilotId String
+  copilot   Copilot @relation(fields: [copilotId], references: [id])
+  text      String
+  order     Int     @default(0)
+}
+
+model QAEntry {
+  id       Int    @id @default(autoincrement())
+  topic    String
+  question String
+  answer   String
+  order    Int    @default(0)
+}
+
+model TickerEvent {
+  id       Int    @id @default(autoincrement())
+  category String
+  message  String
+  order    Int    @default(0)
+}

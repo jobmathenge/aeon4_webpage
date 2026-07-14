@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+.env
+.env.*
+prisma/*.db
+prisma/*.db-journal
+prisma/migrations/dev
+*.log
+.git
