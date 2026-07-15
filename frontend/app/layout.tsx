@@ -58,7 +58,7 @@ const ORG_JSON_LD = {
   slogan: "Secure, AI-Enabled Spaces and Production",
   description: "AI-native copilots for OT security, building management systems, and production IoT.",
   areaServed: ["Saudi Arabia", "United Arab Emirates", "Kenya", "GCC", "Sub-Saharan Africa"],
-  email: "hello@aeon4.ai",
+  email: "info@aeon4.ai",
   url: "https://aeon4.ai",
 };
 

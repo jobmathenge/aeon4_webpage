@@ -13,7 +13,7 @@ services:
       SMTP_USER: ${SMTP_USER:-}
       SMTP_PASS: ${SMTP_PASS:-}
       SMTP_FROM: ${SMTP_FROM:-AeOn4.AI <no-reply@aeon4.ai>}
-      LEADS_NOTIFY_TO: ${LEADS_NOTIFY_TO:-hello@aeon4.ai}
+      LEADS_NOTIFY_TO: ${LEADS_NOTIFY_TO:-info@aeon4.ai}
       ADMIN_API_KEY: ${ADMIN_API_KEY:-change-me}
     volumes:
       - backend_data:/data
