@@ -2,6 +2,7 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Lead } from '@prisma/client';
+import * as nodemailer from 'nodemailer';
 
 function escapeHtml(value: string): string {
   return value
@@ -100,13 +101,17 @@ export class MailService {
     ].join('\n');
 
     try {
-      await this.mailerService.sendMail({
+      const info = await this.mailerService.sendMail({
         to,
         replyTo: lead.email,
         subject: `New pilot request from ${lead.name}`,
         text,
         html,
       });
+      const previewUrl = nodemailer.getTestMessageUrl(info);
+      if (previewUrl) {
+        this.logger.log(`Lead notification sent to a test inbox — preview: ${previewUrl}`);
+      }
     } catch (error) {
       // The lead is already persisted; a notification failure must not fail the request.
       this.logger.error(`Failed to send lead notification email for lead ${lead.id}`, error as Error);

@@ -125,9 +125,24 @@ docker compose up -d
 | `DATABASE_URL` | SQLite file path (default `file:./dev.db`) |
 | `PORT` | Backend port (default `4000`) |
 | `CORS_ORIGIN` | Allowed origin for the frontend |
-| `SMTP_*` | Mail transport for lead notifications (omit `SMTP_HOST` to log emails instead of sending, useful in dev) |
-| `LEADS_NOTIFY_TO` | Address that receives new-lead notifications |
+| `SMTP_*` | Real mail transport for lead notifications. If `SMTP_HOST` is omitted, the backend auto-provisions a disposable [Ethereal](https://ethereal.email) test inbox instead — emails still actually send (over real SMTP), and a preview link is logged per message, but nothing reaches a real mailbox. Set all four (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`) to send to a real address. |
+| `LEADS_NOTIFY_TO` | Address that receives new-lead notifications (default `info@aeon4.ai`) |
 | `ADMIN_API_KEY` | Key required to call `GET /api/leads` |
+
+#### Sending real emails
+
+For Gmail/Google Workspace: enable 2-Step Verification on the sending account, generate an [App Password](https://myaccount.google.com/apppasswords), then set:
+
+```
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your-address@gmail.com
+SMTP_PASS=your-16-char-app-password
+SMTP_FROM="AeOn4.AI <your-address@gmail.com>"
+```
+
+Gmail requires `SMTP_FROM` to match the authenticated account (or a verified "Send As" alias), or it will reject/rewrite the message. For production, a transactional provider (Resend, SendGrid, Postmark, Mailgun, SES) is more reliable than Gmail SMTP and avoids per-account sending limits.
 
 **`frontend/.env.local`**
 
