@@ -102,6 +102,20 @@ docker compose down -v               # also wipe the database volume
 
 Override any backend env var (SMTP creds, `ADMIN_API_KEY`, `CORS_ORIGIN`, etc.) by exporting it before `docker compose up` or adding it to a `.env` file at the repo root — `docker-compose.yml` reads from the shell/`.env` for all the optional values.
 
+#### Pulling the published images
+
+Both images are published on Docker Hub, so any machine with Docker can run the app without cloning the source or building anything:
+
+- [`jobmathenge/aeon4_webpage-backend`](https://hub.docker.com/r/jobmathenge/aeon4_webpage-backend)
+- [`jobmathenge/aeon4_webpage-frontend`](https://hub.docker.com/r/jobmathenge/aeon4_webpage-frontend)
+
+```bash
+docker compose pull   # fetch the published images instead of building locally
+docker compose up -d
+```
+
+`docker-compose.yml` declares both `image:` (the Docker Hub tag) and `build:` (the local Dockerfile) — `docker compose up --build` always rebuilds and retags locally as `jobmathenge/aeon4_webpage-*:latest`, ready to `docker push` again after a change.
+
 ### Environment variables
 
 **`backend/.env`**
