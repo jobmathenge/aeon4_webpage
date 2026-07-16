@@ -14,7 +14,7 @@ const STEPS = [
   {
     depth: "DEPTH 03 · REASON",
     title: "AI on the edge",
-    body: "Domain copilots correlate events across security, buildings, and production — on-prem, air-gap friendly.",
+    body: "Domain copilots correlate events across security, buildings, and production, on-prem and air-gap friendly.",
   },
   {
     depth: "DEPTH 04 · ACT",

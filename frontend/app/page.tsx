@@ -28,7 +28,7 @@ export default async function Home() {
           <span className="eyebrow">The Trinity</span>
           <h2>Three copilots, one shared picture of your operation</h2>
           <p>
-            Each copilot is trained for its domain but shares a single asset model and event fabric — so a security
+            Each copilot is trained for its domain but shares a single asset model and event fabric, so a security
             anomaly, a chiller fault, and a production stall are never three separate stories.
           </p>
         </RevealOnScroll>

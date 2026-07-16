@@ -131,7 +131,7 @@ export default function Hero({ copilots, tickerEvents }: { copilots: Copilot[]; 
           </h1>
           <p>
             AeOn4.AI puts AI-native copilots inside your plant floor, your building systems, and your production
-            network — watching protocols, assets, and anomalies the way sonar watches the deep: continuously,
+            network, watching protocols, assets, and anomalies the way sonar watches the deep: continuously,
             quietly, and in real time.
           </p>
           <div className="hero-actions">

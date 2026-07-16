@@ -1,5 +1,5 @@
 import { Throttle } from '@nestjs/throttler';
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ApiKeyGuard } from '../common/guards/api-key.guard';
 import { CreateLeadDto } from './dto/create-lead.dto';
 import { LeadsService } from './leads.service';
@@ -19,5 +19,11 @@ export class LeadsController {
   @UseGuards(ApiKeyGuard)
   findAll() {
     return this.leadsService.findAll();
+  }
+
+  @Patch(':id/status')
+  @UseGuards(ApiKeyGuard)
+  updateStatus(@Param('id') id: string, @Body('status') status: string) {
+    return this.leadsService.updateStatus(id, status);
   }
 }

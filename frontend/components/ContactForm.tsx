@@ -34,13 +34,13 @@ export default function ContactForm() {
       setStatus("success");
       form.reset();
     } catch {
-      setErrorMessage("Network error — please try again.");
+      setErrorMessage("Network error, please try again.");
       setStatus("error");
     }
   }
 
   if (status === "success") {
-    return <p className="f-status success">Thanks — we&apos;ll be in touch to map the first sweep.</p>;
+    return <p className="f-status success">Thanks, we&apos;ll be in touch to map the first sweep.</p>;
   }
 
   return (

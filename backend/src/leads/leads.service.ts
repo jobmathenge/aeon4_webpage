@@ -28,6 +28,7 @@ export class LeadsService {
 
     if (!isBot) {
       await this.mailService.sendLeadNotification(lead);
+      await this.mailService.sendCustomerConfirmation(lead);
     }
 
     return { id: lead.id, receivedAt: lead.createdAt.toISOString() };
@@ -35,5 +36,12 @@ export class LeadsService {
 
   findAll() {
     return this.prisma.lead.findMany({ orderBy: { createdAt: 'desc' } });
+  }
+
+  async updateStatus(id: string, status: string) {
+    return this.prisma.lead.update({
+      where: { id },
+      data: { status },
+    });
   }
 }

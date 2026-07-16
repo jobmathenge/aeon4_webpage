@@ -14,21 +14,53 @@ async function getJSON<T>(path: string, revalidate: number): Promise<T> {
 }
 
 export function getStats(): Promise<Stat[]> {
-  return getJSON<Stat[]>("/api/content/stats", 3600);
+  return getJSON<Stat[]>("/api/content/stats", 0);
 }
 
 export function getCopilots(): Promise<Copilot[]> {
-  return getJSON<Copilot[]>("/api/content/copilots", 3600);
+  return getJSON<Copilot[]>("/api/content/copilots", 0);
 }
 
 export function getQA(): Promise<QAByTopic> {
-  return getJSON<QAByTopic>("/api/content/qa", 3600);
+  return getJSON<QAByTopic>("/api/content/qa", 0);
 }
 
 export function getQAByTopic(topic: string): Promise<QAPair[]> {
-  return getJSON<QAPair[]>(`/api/content/qa/${topic}`, 3600);
+  return getJSON<QAPair[]>(`/api/content/qa/${topic}`, 0);
 }
 
 export function getTicker(): Promise<TickerEvent[]> {
-  return getJSON<TickerEvent[]>("/api/content/ticker", 60);
+  return getJSON<TickerEvent[]>("/api/content/ticker", 0);
+}
+
+export async function getLeads(apiKey: string): Promise<any[]> {
+  const res = await fetch(`${API_URL}/api/leads`, {
+    headers: {
+      "x-api-key": apiKey,
+    },
+    next: { revalidate: 0 },
+  });
+  if (!res.ok) {
+    if (res.status === 401) {
+      throw new Error("Unauthorized: Invalid API key");
+    }
+    throw new Error(`Failed to fetch leads: ${res.statusText}`);
+  }
+  return res.json() as Promise<any[]>;
+}
+
+export async function updateLeadStatus(leadId: string, status: string, apiKey: string): Promise<any> {
+  const res = await fetch(`${API_URL}/api/leads/${leadId}/status`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": apiKey,
+    },
+    body: JSON.stringify({ status }),
+    next: { revalidate: 0 },
+  });
+  if (!res.ok) {
+    throw new Error(`Failed to update status: ${res.statusText}`);
+  }
+  return res.json();
 }

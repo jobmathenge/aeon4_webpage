@@ -7,7 +7,7 @@ export default function Footer() {
         </svg>
         AeOn<b>4</b>.AI
       </a>
-      <span className="mono">SECURE, AI-ENABLED SPACES AND PRODUCTION · RIYADH — NAIROBI — DUBAI</span>
+      <span className="mono">SECURE, AI-ENABLED SPACES AND PRODUCTION · RIYADH, NAIROBI, DUBAI</span>
       <span className="mono">© 2026 AEON4.AI</span>
     </footer>
   );

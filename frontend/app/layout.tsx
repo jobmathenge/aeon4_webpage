@@ -29,12 +29,12 @@ const michroma = Michroma({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aeon4.ai"),
-  title: "AeOn4.AI — Secure, AI-Enabled Spaces and Production",
+  title: "AeOn4.AI, Secure, AI-Enabled Spaces and Production",
   description:
-    "AeOn4.AI — Secure, AI-enabled spaces and production. Three AI-native copilots for OT security, building management, and production IoT across the GCC and Africa.",
+    "AeOn4.AI, securing AI-enabled spaces and production, offers three AI-native copilots for OT security, building management, and production IoT across the GCC and Africa.",
   authors: [{ name: "Job Mathenge", url: "https://aeon4.ai" }],
   openGraph: {
-    title: "AeOn4.AI — Secure, AI-Enabled Spaces and Production",
+    title: "AeOn4.AI, Secure, AI-Enabled Spaces and Production",
     description:
       "Three AI-native copilots for OT security, building management, and production IoT across the GCC and Africa.",
     type: "website",
@@ -68,7 +68,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <script
           type="application/ld+json"
-          // Static, hand-authored structured data — safe to inject directly.
+          // Static, hand-authored structured data, which is safe to inject directly.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }}
         />
       </head>

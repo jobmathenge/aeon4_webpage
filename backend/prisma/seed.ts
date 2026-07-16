@@ -35,9 +35,9 @@ async function seedCopilots() {
       title: 'Security Copilot',
       cardSubtitle: 'A guard for your plant network that never sleeps.',
       cardDescription:
-        'AI-assisted OT threat detection, triage, and response guidance for engineers — not just SOC analysts. Understands industrial protocols natively and maps findings to MITRE ATT&CK for ICS.',
+        'AI-assisted OT threat detection, triage, and response guidance for engineers, not just SOC analysts. Understands industrial protocols natively and maps findings to MITRE ATT&CK for ICS.',
       heroDescription:
-        'Continuous OT threat detection across Purdue levels — protocol-aware network sensing, SIEM correlation, and IEC 62443 zone & conduit awareness, explained in plain language by an AI that knows your plant.',
+        'Continuous OT threat detection across Purdue levels, including protocol-aware network sensing, SIEM correlation, and IEC 62443 zone & conduit awareness, explained in plain language by an AI that knows your plant.',
       protocolBadge: 'ZEEK · SURICATA · WAZUH · MITRE ATT&CK FOR ICS',
       heroWord: 'WATCH',
       chip1Value: '3',
@@ -62,7 +62,7 @@ async function seedCopilots() {
       cardDescription:
         'Digital twins of AHUs, chillers, and district energy plants that explain themselves. Detects drift, sequences faults, and answers "why is this floor hot?" with evidence, not guesses.',
       heroDescription:
-        'Digital twins of AHUs, chillers, and district energy plants that explain themselves — fault detection, comfort diagnostics, and energy optimisation grounded in real equipment models.',
+        'Digital twins of AHUs, chillers, and district energy plants that explain themselves, including fault detection, comfort diagnostics, and energy optimisation grounded in real equipment models.',
       protocolBadge: 'BACNET · DIGITAL TWINS · FDD · ENERGY OPTIMISATION',
       heroWord: 'BREATHE',
       chip1Value: '−18%',
@@ -87,7 +87,7 @@ async function seedCopilots() {
       cardDescription:
         'ISA-95 namespaced telemetry from line to enterprise. Watches OEE, spots anomalies in process data, and links production events to their upstream causes in seconds.',
       heroDescription:
-        'ISA-95 namespaced telemetry from line to enterprise — anomaly detection on process data, OEE tracking, and root-cause hints that link production events to their upstream causes.',
+        'ISA-95 namespaced telemetry from line to enterprise, including anomaly detection on process data, OEE tracking, and root-cause hints that link production events to their upstream causes.',
       protocolBadge: 'MQTT · OPC UA · MODBUS TCP · ISA-95 UNS',
       heroWord: 'PRODUCE',
       chip1Value: '84%',
@@ -125,21 +125,21 @@ async function seedQA() {
       order: 0,
       question: 'why is PLC-EXT-02 flagged this morning?',
       answer:
-        'At 06:41 a WRITE_COIL from 10.20.4.7 (engineering WS, Zone E-2) targeted PLC-EXT-02 in Zone P-1 — outside its learned baseline and outside the approved conduit. No matching change ticket found. Mapped to ATT&CK for ICS T0836 (Modify Parameter). Suggested: verify with shift engineer, then isolate the conduit if unconfirmed.',
+        'At 06:41 a WRITE_COIL from 10.20.4.7 (engineering WS, Zone E-2) targeted PLC-EXT-02 in Zone P-1, outside its learned baseline and outside the approved conduit. No matching change ticket found. Mapped to ATT&CK for ICS T0836 (Modify Parameter). Suggested: verify with shift engineer, then isolate the conduit if unconfirmed.',
     },
     {
       topic: 'bms',
       order: 0,
       question: 'why is level 3 east running warm?',
       answer:
-        'AHU-03 serving L3-East shows supply air temp drifting +2.1°C over 4h. Chilled-water valve commanded 100% but ΔT across the coil is low — consistent with a fouled coil or CHW supply issue, not a setpoint problem. Plant CHW ΔT is also below design. Suggested: check strainer on AHU-03 CHW branch first.',
+        'AHU-03 serving L3-East shows supply air temp drifting +2.1°C over 4h. Chilled-water valve commanded 100% but ΔT across the coil is low, consistent with a fouled coil or CHW supply issue, not a setpoint problem. Plant CHW ΔT is also below design. Suggested: check strainer on AHU-03 CHW branch first.',
     },
     {
       topic: 'iot',
       order: 0,
       question: 'what dropped OEE on line 4?',
       answer:
-        'Line-4 OEE fell 6% between 09:10–09:35, driven by availability. Namespace trace: infeed conveyor CNV-4A reported 3 micro-stops (motor overload warnings) starting 09:08 — each stall starved the filler 90s later. Quality and performance held steady. Suggested: inspect CNV-4A drive; pattern matches last Tuesday\'s event.',
+        'Line-4 OEE fell 6% between 09:10–09:35, driven by availability. Namespace trace: infeed conveyor CNV-4A reported 3 micro-stops (motor overload warnings) starting 09:08, with each stall starving the filler 90s later. Quality and performance held steady. Suggested: inspect CNV-4A drive; pattern matches last Tuesday\'s event.',
     },
   ];
 
